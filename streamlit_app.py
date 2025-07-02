@@ -42,7 +42,7 @@ avoid_ingredients = {
 }
 
 def main():
-    st.title("💊 약물 추천기")
+    st.title("💊Medicine Recommender")
 
     symptom = st.selectbox("1. 증상을 선택하세요:", list(medicine_db.keys()))
     selected_criteria = st.multiselect("2. 고려사항을 선택하세요:", list(avoid_ingredients.keys()))
