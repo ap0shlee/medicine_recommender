@@ -41,7 +41,7 @@ avoid_ingredients = {
 }
 
 def main():
-    st.title("💊Medicine Recommender")
+    st.title("💊Painkiller Adviser")
 
     symptom = st.selectbox("1. 증상을 선택하세요:", list(medicine_db.keys()))
     selected_criteria = st.multiselect("2. 고려사항을 선택하세요:", list(avoid_ingredients.keys()))
@@ -51,7 +51,7 @@ def main():
     for c in selected_criteria:
         avoid_set.update(avoid_ingredients.get(c, []))
 
-    st.markdown(f"### 🚫 피해야 할 성분: {', '.join(avoid_set) if avoid_set else '없음'}")
+    st.markdown(f"### 🚫피해야 할 성분: {', '.join(avoid_set) if avoid_set else '없음'}")
 
     candidates = medicine_db.get(symptom, [])
     recommended = []
@@ -60,11 +60,15 @@ def main():
             recommended.append(med["이름"])
 
     if recommended:
-        st.markdown("### ✅ 추천 약물:")
+        st.markdown("### ✅추천 약물:")
         for name in recommended:
             st.write(f"- {name}")
     else:
         st.warning("조건에 맞는 약물이 없습니다. 약사와 상담을 권장합니다.")
+
+# 하단 링크 추가
+    st.markdown("---")
+    st.markdown("📮간략한 설문 -> [https://forms.gle/N8vsQsLsfscxJedo8]")
 
 if __name__ == "__main__":
     main()
